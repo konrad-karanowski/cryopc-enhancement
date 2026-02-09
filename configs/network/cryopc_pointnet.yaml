@@ -1,0 +1,20 @@
+_target_: src.models.cryopc.network.UNet
+
+in_channels: 1
+model_channels: 32
+out_channels: 1
+num_res_blocks: 2
+attention_resolutions: [1, 2, 4]
+dropout: 0.2
+channel_mult: [1, 2, 2, 4]        
+conv_resample: True
+num_heads: 4
+struc_dim: 256
+
+feature_extractor: 
+  _target_: src.models.cryopc.network.PointNetfeat
+  
+  in_channels: 4
+  feature_size: 256
+  global_feat: True
+  feature_transform: false

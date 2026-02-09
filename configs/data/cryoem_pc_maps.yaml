@@ -1,0 +1,11 @@
+_target_: src.data.cryoem_pc_map_datamodule.PCCryoemDensityMapDataModule
+
+data_root: ${paths.data_dir}
+csv_name: pointclouds.csv
+num_points: 1024
+normalize_coords: True
+
+train_max_samples: 0
+val_max_samples: 400
+batch_size: 4
+num_workers: 12

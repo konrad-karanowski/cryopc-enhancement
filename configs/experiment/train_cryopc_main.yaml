@@ -1,0 +1,50 @@
+# @package _global_
+
+# to execute this experiment run:
+# python train.py experiment=example
+
+defaults:
+  - override /data: cryoem_pc_maps
+  - override /model: cryopc
+  - override /network: cryopc_pointnet
+  - override /callbacks: default
+  - override /trainer: gpu
+
+# all parameters below will be merged with parameters from default configurations set above
+# this allows you to overwrite only specified parameters
+
+seed: 12345
+
+model:
+  train_loss:
+    _target_: src.models.cryopc.loss_functions.CombinedLoss
+
+    eps: 1e-6
+    alpha: 1.0
+    beta: 1.0
+    normalize: True
+
+
+  condition_on_point_clouds: True
+  use_mask_loss: False
+
+
+trainer:
+  min_epochs: 50
+  max_epochs: 100
+  check_val_every_n_epoch: 1
+  devices: 1
+  strategy: ddp_find_unused_parameters_true
+
+
+data:
+  batch_size: 5
+  num_workers: 4
+  pin_memory: True
+  persistent_workers: True  # keep workers between epochs
+  prefetch_factor: 2  # can help with buffering
+  val_max_samples: 400
+
+  num_points: 1024
+  normalize_coords: False
+  normalize_point_cloud_coords: False

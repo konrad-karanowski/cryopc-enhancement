@@ -1,0 +1,23 @@
+# @package _global_
+
+defaults:
+  - override /data: cryoem_pc_maps
+  - override /model: cryopc
+  - override /network: cryopc_pointnet
+
+model:
+  condition_on_point_clouds: True
+  use_mask_loss: False
+
+data:
+  batch_size: 6
+  num_points: 512
+
+# necessary paths for map
+ckpt_path: "${paths.models_dir}/cryopc_512.ckpt"
+
+# Hacked
+map_save_prefix: 'cryopc_512'
+csv_path: "${paths.data_dir}/dataset/testset_full.csv"
+collection_dir: ${paths.data_dir}/collection
+output_dir: ${paths.map_outputs_dir}/full_output

@@ -1,0 +1,22 @@
+# @package _global_
+
+# to execute this experiment run:
+
+defaults:
+  - override /data: cryoem_pc_maps # choose datamodule with `test_dataloader()` for evaluation
+  - override /model: cryopc
+  - override /network: cryopc_pointnet
+
+ckpt_path: "${paths.models_dir}/cryopc_512.ckpt"
+
+model:
+  condition_on_point_clouds: True
+  use_mask_loss: False
+
+data:
+  batch_size: 6
+  num_points: 512
+
+# necessary paths for map
+input_map_path: ??
+output_map_path: ??

@@ -1,0 +1,35 @@
+# @package _global_
+
+defaults:
+  - _self_
+  - data: cryoem_maps # choose datamodule with `test_dataloader()` for evaluation
+  - model: cryoten
+  - network: cryoten_unetr
+  - trainer: gpu
+  - paths: default
+  - hydra: default
+  - optional local: default
+
+  - evaluation: null
+
+
+task_name: "eval_singlemap"
+
+# This should be moved somewhere
+prediction_writer:
+  _target_: src.evaluation_utils.prediction_writer.PredictionsWriter
+  output_dir: null
+  write_interval: 'epoch'
+
+trainer:
+  # This is super important for some reason
+  default_root_dir: null
+  logger: null
+  callbacks: null
+
+# passing checkpoint path is necessary for evaluation
+ckpt_path: ???
+
+# necessary paths for map
+input_map_path: ???
+output_map_path: ???

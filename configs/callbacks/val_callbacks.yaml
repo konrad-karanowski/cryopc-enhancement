@@ -1,0 +1,3 @@
+defaults:
+  - val_loss_logger
+  - _self_

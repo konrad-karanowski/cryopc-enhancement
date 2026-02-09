@@ -1,0 +1,13 @@
+name: cryoem-enhancement
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - matplotlib
+  - pandas
+  - numpy
+  - biopython
+  - rdkit
+  - cctbx-base
+  - mrcfile
+  - ipykernel

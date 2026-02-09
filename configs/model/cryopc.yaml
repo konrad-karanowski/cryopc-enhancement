@@ -1,0 +1,23 @@
+_target_: src.models.cryopc.model.CryoPCLitModule
+
+net: ${network}
+
+train_loss: 
+  _target_: torch.nn.SmoothL1Loss
+
+condition_on_point_clouds: False
+conditon_on_coords: False
+use_mask_loss: False
+
+optimizer:
+  _target_: torch.optim.AdamW
+  lr: 5e-4
+  weight_decay: 0.0
+
+monitor_metric: "val/loss"
+lr_scheduler:
+  _target_: torch.optim.lr_scheduler.ReduceLROnPlateau
+  mode: min
+  factor: 0.5
+  patience: 4
+  min_lr: 0.000001
