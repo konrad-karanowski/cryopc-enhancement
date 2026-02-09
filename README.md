@@ -13,11 +13,8 @@ Official repository for the CryoEM Map Enhancement project. This repository cont
 - [Setup Repository](#setup-repository)
 - [Project Structure](#project-structure)
 - [Available Scripts](#available-scripts)
-- [Data Lists](#data-lists)
 - [Running Experiments](#running-experiments)
-- [Available Models](#available-models)
 - [Citation](#citation)
-- [TODO](#todo)
 - [Acknowledgments](#acknowledgments)
 
 ## Setup Repository
@@ -36,12 +33,6 @@ Install required packages:
 pip install -r requirements.txt
 ```
 
-## Data setup
-Download the maps from EMDB database. List of entries is stored in `data/testset.csv`.
-
-You can download model checkpoint from: `https://drive.google.com/drive/folders/1HeV5r51qydn-qjAUh50k2CyD3kyAsjRb?usp=sharing`.
-
-
 ### Configuration
 
 Create `configs/local/default.yaml`:
@@ -50,7 +41,12 @@ Create `configs/local/default.yaml`:
 storage_dir: /path/to/your_data_root
 ```
 
-You should place `cryopc_512.ckpt` inside of `storage_dir/models`.
+## Data setup
+Download the maps from EMDB database. List of entries is stored in `data/testset.csv`. In order to run `eval_testset.py`, put this file inside of `your_data_root/data/`.
+
+You can download model checkpoint from: `https://drive.google.com/drive/folders/1HeV5r51qydn-qjAUh50k2CyD3kyAsjRb?usp=sharing`.
+
+You should place `cryopc.ckpt` inside of `your_data_root/models`.
 
 ## Project Structure
 
@@ -75,7 +71,6 @@ cryoem-map-enhancement/
 ```
 your_data_root/
 ├── data/
-│   ├── collection/           # Downloaded maps storage
 │   └── dataset/              # CSV files from data/ directory
 ├── models/                   # Model checkpoints
 └── outputs/                  # Output files

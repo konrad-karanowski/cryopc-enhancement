@@ -14,10 +14,10 @@ data:
   num_points: 512
 
 # necessary paths for map
-ckpt_path: "${paths.models_dir}/cryopc_512.ckpt"
+ckpt_path: "${paths.models_dir}/cryopc.ckpt"
 
 # Hacked
-map_save_prefix: 'cryopc_512'
-csv_path: "${paths.data_dir}/dataset/testset_full.csv"
+map_save_prefix: 'cryopc'
+csv_path: "${paths.data_dir}/dataset/testset.csv"
 collection_dir: ${paths.data_dir}/collection
 output_dir: ${paths.map_outputs_dir}/full_output
